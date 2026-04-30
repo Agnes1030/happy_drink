@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>SipTrack - AI 洞察</title>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Public+Sans:ital,wght@0,400;0,500;0,600;0,700;1,700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "outline": "#727971",
+                        "on-secondary-fixed-variant": "#59422d",
+                        "tertiary-fixed": "#ffdcbd",
+                        "on-surface": "#1b1c1a",
+                        "inverse-on-surface": "#f2f0ed",
+                        "on-tertiary": "#ffffff",
+                        "surface-container-high": "#eae8e4",
+                        "primary": "#3a6544",
+                        "surface-container-lowest": "#ffffff",
+                        "surface-variant": "#e4e2de",
+                        "on-primary-fixed": "#00210c",
+                        "tertiary-fixed-dim": "#f0bd8b",
+                        "error-container": "#ffdad6",
+                        "tertiary": "#7b542b",
+                        "secondary-container": "#ffdcbf",
+                        "inverse-primary": "#a2d2a9",
+                        "inverse-surface": "#30312e",
+                        "surface-dim": "#dbdad6",
+                        "on-primary": "#ffffff",
+                        "error": "#ba1a1a",
+                        "background": "#fbf9f5",
+                        "on-error": "#ffffff",
+                        "on-secondary": "#ffffff",
+                        "surface": "#fbf9f5",
+                        "surface-bright": "#fbf9f5",
+                        "tertiary-container": "#966c41",
+                        "on-primary-fixed-variant": "#244f30",
+                        "on-background": "#1b1c1a",
+                        "on-secondary-container": "#795f49",
+                        "on-tertiary-fixed-variant": "#623f18",
+                        "secondary": "#725a43",
+                        "primary-fixed-dim": "#a2d2a9",
+                        "surface-container-highest": "#e4e2de",
+                        "secondary-fixed-dim": "#e1c1a5",
+                        "on-surface-variant": "#414941",
+                        "on-tertiary-fixed": "#2c1600",
+                        "surface-container": "#efeeea",
+                        "on-primary-container": "#f6fff3",
+                        "surface-tint": "#3c6846",
+                        "on-tertiary-container": "#fffbff",
+                        "on-error-container": "#93000a",
+                        "primary-container": "#527e5b",
+                        "secondary-fixed": "#ffdcbf",
+                        "outline-variant": "#c1c9bf",
+                        "primary-fixed": "#bdefc4",
+                        "on-secondary-fixed": "#291806",
+                        "surface-container-low": "#f5f3ef"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "sm": "12px",
+                        "margin": "20px",
+                        "xl": "64px",
+                        "xs": "4px",
+                        "lg": "40px",
+                        "gutter": "16px",
+                        "md": "24px",
+                        "base": "8px"
+                    },
+                    "fontFamily": {
+                        "body-lg": ["Public Sans"],
+                        "headline-md": ["Public Sans"],
+                        "label-sm": ["Public Sans"],
+                        "display-lg": ["Public Sans"],
+                        "body-md": ["Public Sans"],
+                        "stat-xl": ["Public Sans"]
+                    },
+                    "fontSize": {
+                        "body-lg": ["18px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                        "headline-md": ["24px", {"lineHeight": "1.3", "fontWeight": "600"}],
+                        "label-sm": ["12px", {"lineHeight": "1.4", "letterSpacing": "0.04em", "fontWeight": "600"}],
+                        "display-lg": ["36px", {"lineHeight": "1.2", "fontWeight": "700"}],
+                        "body-md": ["16px", {"lineHeight": "1.5", "fontWeight": "400"}],
+                        "stat-xl": ["48px", {"lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "700"}]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        .no-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .no-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+</head>
+<body class="bg-background text-on-background font-body-md antialiased min-h-screen overflow-x-hidden pb-[160px] pt-20">
+<!-- TopAppBar -->
+<header class="flex justify-between items-center w-full px-5 h-16 bg-[#FDFCF0] dark:bg-stone-950 docked full-width top-0 border-none shadow-[0_4px_20px_-10px_rgba(62,47,40,0.12)] fixed z-50">
+<div class="text-[#5D8A66] dark:text-[#7CAF89] flex items-center justify-center">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">coffee</span>
+</div>
+<div class="text-[#5D8A66] dark:text-[#7CAF89] font-public-sans font-semibold text-lg tracking-tight font-bold italic">SipTrack</div>
+<div class="flex items-center justify-center">
+<div class="w-8 h-8 rounded-full bg-surface-variant overflow-hidden flex items-center justify-center border border-outline-variant/30">
+<span class="material-symbols-outlined text-on-surface-variant text-[20px]" style="font-variation-settings: 'FILL' 1;">person</span>
+</div>
+</div>
+</header>
+<!-- Main Canvas: Chat Interface -->
+<main class="flex flex-col px-margin gap-md max-w-2xl mx-auto">
+<!-- Welcome / Context -->
+<div class="flex justify-center my-4">
+<div class="bg-surface-container-low px-sm py-xs rounded-full shadow-sm">
+<p class="font-label-sm text-on-surface-variant text-center">今天, 上午 10:42</p>
+</div>
+</div>
+<!-- User Message -->
+<div class="self-end max-w-[85%]">
+<div class="bg-primary text-on-primary rounded-xl rounded-tr-sm p-sm shadow-sm inline-block">
+<p class="font-body-md">我这个月在咖啡上花了多少钱？</p>
+</div>
+</div>
+<!-- AI Response -->
+<div class="self-start max-w-[90%]">
+<div class="bg-surface-container-lowest text-on-surface rounded-xl rounded-tl-sm p-md shadow-[0_4px_20px_-10px_rgba(62,47,40,0.08)] flex flex-col gap-sm">
+<div class="flex items-start gap-sm mb-1">
+<div class="w-6 h-6 rounded-full bg-primary-container flex items-center justify-center shrink-0 mt-1">
+<span class="material-symbols-outlined text-on-primary-container text-[14px]" style="font-variation-settings: 'FILL' 1;">smart_toy</span>
+</div>
+<p class="font-body-md leading-relaxed">
+                        您这个月购买了 5 杯咖啡，共花费 <strong class="text-primary font-bold">¥28.50</strong>。最常购买的品牌是 <strong class="text-secondary font-bold">星巴克</strong>。
+                    </p>
+</div>
+<!-- Micro-Chart inside bubble -->
+<div class="mt-sm bg-background p-sm rounded-lg border border-outline-variant/30">
+<p class="font-label-sm text-on-surface-variant mb-2">消费趋势 (每周)</p>
+<div class="flex flex-col w-full h-[120px] justify-end">
+<div class="flex items-end justify-between gap-2 h-full pb-1 border-b border-outline-variant/20">
+<!-- Week 1 -->
+<div class="w-full flex justify-center group relative">
+<div class="w-8 bg-surface-variant rounded-t-md h-[40%] transition-colors duration-300"></div>
+</div>
+<!-- Week 2 -->
+<div class="w-full flex justify-center group relative">
+<div class="w-8 bg-surface-variant rounded-t-md h-[25%] transition-colors duration-300"></div>
+</div>
+<!-- Week 3 -->
+<div class="w-full flex justify-center group relative">
+<div class="w-8 bg-surface-variant rounded-t-md h-[55%] transition-colors duration-300"></div>
+</div>
+<!-- Week 4 (Current) -->
+<div class="w-full flex justify-center relative">
+<div class="w-8 bg-primary rounded-t-md h-[85%] shadow-sm relative">
+<span class="absolute -top-6 left-1/2 -translate-x-1/2 font-label-sm text-primary bg-primary-container px-1 py-[2px] rounded-sm text-[10px] whitespace-nowrap">¥14.00</span>
+</div>
+</div>
+</div>
+<div class="flex items-center justify-between text-on-surface-variant font-label-sm mt-2 opacity-70 px-1">
+<span>第1周</span>
+<span>第2周</span>
+<span>第3周</span>
+<span class="text-primary font-bold">第4周</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</main>
+<!-- Bottom Input & Suggestions Area -->
+<div class="fixed bottom-[80px] left-0 w-full px-margin pb-sm pt-xl bg-gradient-to-t from-background via-background to-transparent z-40 max-w-2xl mx-auto right-0 flex flex-col gap-sm">
+<!-- Suggested Questions -->
+<div class="flex gap-sm overflow-x-auto no-scrollbar pb-xs">
+<button class="shrink-0 bg-surface-container-lowest text-on-surface-variant font-label-sm px-4 py-2 rounded-full shadow-sm border border-outline-variant/50 hover:bg-surface-container transition-colors">
+<span class="flex items-center gap-1">
+<span class="material-symbols-outlined text-[16px]">monitoring</span> 与上月比较
+                </span>
+</button>
+<button class="shrink-0 bg-surface-container-lowest text-on-surface-variant font-label-sm px-4 py-2 rounded-full shadow-sm border border-outline-variant/50 hover:bg-surface-container transition-colors">
+<span class="flex items-center gap-1">
+<span class="material-symbols-outlined text-[16px]">water_drop</span> 我摄入的糖分过多吗？
+                </span>
+</button>
+<button class="shrink-0 bg-surface-container-lowest text-on-surface-variant font-label-sm px-4 py-2 rounded-full shadow-sm border border-outline-variant/50 hover:bg-surface-container transition-colors">
+<span class="flex items-center gap-1">
+<span class="material-symbols-outlined text-[16px]">bolt</span> 今天咖啡因的影响
+                </span>
+</button>
+</div>
+<!-- Chat Input -->
+<div class="flex items-center bg-surface-container-lowest rounded-full p-1 pl-4 shadow-[0_4px_20px_-10px_rgba(62,47,40,0.12)] border border-outline-variant/30 relative z-10">
+<input class="bg-transparent border-none focus:ring-0 flex-1 font-body-md text-on-surface w-full p-0 py-2 outline-none" placeholder="询问你的饮用习惯..." type="text"/>
+<button class="w-10 h-10 rounded-full bg-primary flex items-center justify-center text-on-primary shrink-0 hover:opacity-90 transition-opacity shadow-sm ml-2">
+<span class="material-symbols-outlined text-[20px]" style="font-variation-settings: 'FILL' 1;">arrow_upward</span>
+</button>
+</div>
+</div>
+<!-- BottomNavBar -->
+<nav class="fixed bottom-0 left-0 w-full z-50 flex justify-around items-center px-4 pt-2 pb-6 bg-white/90 dark:bg-stone-900/90 backdrop-blur-md border-t border-stone-100 dark:border-stone-800 shadow-[0_-4px_20px_-10px_rgba(62,47,40,0.08)]">
+<!-- Home -->
+<a class="flex flex-col items-center justify-center text-stone-400 dark:text-stone-500 hover:text-[#5D8A66] dark:hover:text-[#7CAF89] w-16" href="#">
+<span class="material-symbols-outlined mb-1">home</span>
+<span class="text-[11px] font-medium font-public-sans">首页</span>
+</a>
+<!-- Logs -->
+<a class="flex flex-col items-center justify-center text-stone-400 dark:text-stone-500 hover:text-[#5D8A66] dark:hover:text-[#7CAF89] w-16" href="#">
+<span class="material-symbols-outlined mb-1">receipt_long</span>
+<span class="text-[11px] font-medium font-public-sans">日志</span>
+</a>
+<!-- AI (Active) -->
+<a class="flex flex-col items-center justify-center text-[#5D8A66] dark:text-[#7CAF89] font-bold bg-[#5D8A66]/10 rounded-xl px-3 py-1 scale-90 transition-all duration-200 w-16" href="#">
+<span class="material-symbols-outlined mb-1" style="font-variation-settings: 'FILL' 1;">smart_toy</span>
+<span class="text-[11px] font-medium font-public-sans">AI</span>
+</a>
+<!-- Profile -->
+<a class="flex flex-col items-center justify-center text-stone-400 dark:text-stone-500 hover:text-[#5D8A66] dark:hover:text-[#7CAF89] w-16" href="#">
+<span class="material-symbols-outlined mb-1">person</span>
+<span class="text-[11px] font-medium font-public-sans">我的</span>
+</a>
+</nav>
+</body></html>

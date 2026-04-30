@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+
+<html class="light" lang="zh"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>SipTrack - 饮品历史</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "outline": "#727971",
+                        "on-secondary-fixed-variant": "#59422d",
+                        "tertiary-fixed": "#ffdcbd",
+                        "on-surface": "#1b1c1a",
+                        "inverse-on-surface": "#f2f0ed",
+                        "on-tertiary": "#ffffff",
+                        "surface-container-high": "#eae8e4",
+                        "primary": "#3a6544",
+                        "surface-container-lowest": "#ffffff",
+                        "surface-variant": "#e4e2de",
+                        "on-primary-fixed": "#00210c",
+                        "tertiary-fixed-dim": "#f0bd8b",
+                        "error-container": "#ffdad6",
+                        "tertiary": "#7b542b",
+                        "secondary-container": "#ffdcbf",
+                        "inverse-primary": "#a2d2a9",
+                        "inverse-surface": "#30312e",
+                        "surface-dim": "#dbdad6",
+                        "on-primary": "#ffffff",
+                        "error": "#ba1a1a",
+                        "background": "#fbf9f5",
+                        "on-error": "#ffffff",
+                        "on-secondary": "#ffffff",
+                        "surface": "#fbf9f5",
+                        "surface-bright": "#fbf9f5",
+                        "tertiary-container": "#966c41",
+                        "on-primary-fixed-variant": "#244f30",
+                        "on-background": "#1b1c1a",
+                        "on-secondary-container": "#795f49",
+                        "on-tertiary-fixed-variant": "#623f18",
+                        "secondary": "#725a43",
+                        "primary-fixed-dim": "#a2d2a9",
+                        "surface-container-highest": "#e4e2de",
+                        "secondary-fixed-dim": "#e1c1a5",
+                        "on-surface-variant": "#414941",
+                        "on-tertiary-fixed": "#2c1600",
+                        "surface-container": "#efeeea",
+                        "on-primary-container": "#f6fff3",
+                        "surface-tint": "#3c6846",
+                        "on-tertiary-container": "#fffbff",
+                        "on-error-container": "#93000a",
+                        "primary-container": "#527e5b",
+                        "secondary-fixed": "#ffdcbf",
+                        "outline-variant": "#c1c9bf",
+                        "primary-fixed": "#bdefc4",
+                        "on-secondary-fixed": "#291806",
+                        "surface-container-low": "#f5f3ef"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "sm": "12px",
+                        "margin": "20px",
+                        "xl": "64px",
+                        "xs": "4px",
+                        "lg": "40px",
+                        "gutter": "16px",
+                        "md": "24px",
+                        "base": "8px"
+                    },
+                    "fontFamily": {
+                        "body-lg": ["Public Sans"],
+                        "headline-md": ["Public Sans"],
+                        "label-sm": ["Public Sans"],
+                        "display-lg": ["Public Sans"],
+                        "body-md": ["Public Sans"],
+                        "stat-xl": ["Public Sans"]
+                    },
+                    "fontSize": {
+                        "body-lg": ["18px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                        "headline-md": ["24px", {"lineHeight": "1.3", "fontWeight": "600"}],
+                        "label-sm": ["12px", {"lineHeight": "1.4", "letterSpacing": "0.04em", "fontWeight": "600"}],
+                        "display-lg": ["36px", {"lineHeight": "1.2", "fontWeight": "700"}],
+                        "body-md": ["16px", {"lineHeight": "1.5", "fontWeight": "400"}],
+                        "stat-xl": ["48px", {"lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "700"}]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        body {
+            background-color: theme('colors.background');
+            color: theme('colors.on-background');
+            -webkit-font-smoothing: antialiased;
+        }
+        /* Custom scrollbar for chips */
+        .hide-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .hide-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+</head>
+<body class="min-h-screen pb-[90px]">
+<!-- TopAppBar -->
+<header class="flex justify-between items-center w-full px-5 h-16 bg-[#FDFCF0] dark:bg-stone-950 docked full-width top-0 border-none shadow-[0_4px_20px_-10px_rgba(62,47,40,0.12)] z-40 sticky top-0">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-[#5D8A66] dark:text-[#7CAF89]">coffee</span>
+<span class="font-public-sans font-semibold text-lg tracking-tight text-[#5D8A66] dark:text-[#7CAF89] font-bold italic">SipTrack</span>
+</div>
+<div class="w-8 h-8 rounded-full bg-surface-variant overflow-hidden border border-outline-variant/30 flex items-center justify-center">
+<span class="material-symbols-outlined text-on-surface-variant" style="font-variation-settings: 'FILL' 1;">person</span>
+</div>
+</header>
+<main class="px-margin pt-sm flex flex-col gap-lg max-w-2xl mx-auto w-full">
+<!-- Search Section -->
+<section class="flex flex-col gap-sm">
+<div class="relative w-full shadow-[0_2px_10px_-4px_rgba(62,47,40,0.08)] rounded-xl bg-surface-container-lowest border border-outline-variant/40 focus-within:border-tertiary focus-within:ring-1 focus-within:ring-tertiary transition-all">
+<div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+<span class="material-symbols-outlined text-on-surface-variant">search</span>
+</div>
+<input class="block w-full pl-10 pr-3 py-3 border-none bg-transparent rounded-xl font-body-md text-on-surface focus:ring-0 placeholder:text-outline-variant" placeholder="搜索记录..." type="text"/>
+</div>
+<!-- Filter Chips -->
+<div class="flex gap-2 overflow-x-auto hide-scrollbar pb-1 pt-1 -mx-margin px-margin">
+<button class="flex items-center justify-center px-4 py-1.5 rounded-full bg-primary text-on-primary font-label-sm text-label-sm shrink-0 shadow-[0_2px_8px_-2px_rgba(62,47,40,0.15)]">全部</button>
+<button class="flex items-center justify-center px-4 py-1.5 rounded-full bg-surface-container border border-outline-variant/50 text-on-surface-variant font-label-sm text-label-sm shrink-0 hover:bg-surface-variant transition-colors">咖啡</button>
+<button class="flex items-center justify-center px-4 py-1.5 rounded-full bg-surface-container border border-outline-variant/50 text-on-surface-variant font-label-sm text-label-sm shrink-0 hover:bg-surface-variant transition-colors">奶茶</button>
+<button class="flex items-center justify-center px-4 py-1.5 rounded-full bg-surface-container border border-outline-variant/50 text-on-surface-variant font-label-sm text-label-sm shrink-0 hover:bg-surface-variant transition-colors">本月</button>
+</div>
+</section>
+<!-- Logs List -->
+<section class="flex flex-col gap-4">
+<h2 class="font-headline-md text-headline-md text-on-surface">最近记录</h2>
+<div class="flex flex-col gap-3">
+<!-- Log Item 1 -->
+<article class="bg-surface-container-lowest rounded-xl p-4 flex gap-4 items-center shadow-[0_4px_16px_-6px_rgba(62,47,40,0.06)] border border-outline-variant/20">
+<div class="w-12 h-12 rounded-lg bg-surface-variant overflow-hidden shrink-0">
+<img alt="Latte art" class="w-full h-full object-cover" data-alt="A small cup of coffee with latte art on a wooden saucer, warm lighting, cozy cafe aesthetic" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA1tUfnOKOXbTALjWdLBAtJc2HzEivFCKIgHbqFiUntWGD2LdUCThG8hIt74fImqyzukUnnQURA7ngFktibEj9igKcMT2Gy2RY7iMglgYc31BawBXAIRzU7SL6DYtuD5c4f2gAM26L3XR6JCeASFnrE0JydJfBHF1cFrb1j5n32EG3W88kouVLl3SRj6EfKk9R9XInR4HTN1LJ0Dv3nB00-Co_wLWXd3iSKuvippLb5QnXaFK07Eoh8VZRXlC0VXeW-kkPTFdgHJBU"/>
+</div>
+<div class="flex-1 min-w-0">
+<h3 class="font-body-md text-body-md font-semibold text-on-surface truncate">燕麦拿铁</h3>
+<p class="font-label-sm text-label-sm text-outline font-normal mt-0.5">今天, 上午 8:30 • 蓝瓶咖啡</p>
+</div>
+<div class="flex flex-col items-end gap-1 shrink-0">
+<span class="font-body-md text-body-md font-medium text-on-surface">¥5.50</span>
+<div class="flex items-center gap-1 text-tertiary-container">
+<span class="material-symbols-outlined text-[14px]">water_drop</span>
+<span class="font-label-sm text-[10px]">低</span>
+</div>
+</div>
+</article>
+<!-- Log Item 2 -->
+<article class="bg-surface-container-lowest rounded-xl p-4 flex gap-4 items-center shadow-[0_4px_16px_-6px_rgba(62,47,40,0.06)] border border-outline-variant/20">
+<div class="w-12 h-12 rounded-lg bg-surface-variant overflow-hidden shrink-0">
+<img alt="Boba tea" class="w-full h-full object-cover" data-alt="Close up of brown sugar boba milk tea in a clear plastic cup with tapioca pearls at the bottom, bright natural lighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBzr0p_J6nuD5IOdlpG1mPORqQzd5vkrYk9TW0L2n0YXYRLtcLO4iHRhmwfXzaVK-z92wFqJ0E4XZ3UBRk4AvQkvtkmml63OSKufA33S14PbW0XzmtW0kWLCe0z-Zqh745EU99lZyJg8qmNj05brD2gpu0cjsLQTWWPDQ1dFtOT3aXVUuuGkDnXRKoleK9jyOVhVXYSlAFA164WX63GkJnNIb_VcYgN8Z2cWntbqX92b0l6PQU4xHeuZgv8zFxX5Vt-xpQtjnD9xjs"/>
+</div>
+<div class="flex-1 min-w-0">
+<h3 class="font-body-md text-body-md font-semibold text-on-surface truncate">黑糖波霸奶茶</h3>
+<p class="font-label-sm text-label-sm text-outline font-normal mt-0.5">昨天, 下午 3:15 • Boba Guys</p>
+</div>
+<div class="flex flex-col items-end gap-1 shrink-0">
+<span class="font-body-md text-body-md font-medium text-on-surface">¥6.25</span>
+<div class="flex items-center gap-1 text-tertiary-container">
+<span class="material-symbols-outlined text-[14px]" style="font-variation-settings: 'FILL' 1;">water_drop</span>
+<span class="font-label-sm text-[10px]">高</span>
+</div>
+</div>
+</article>
+<!-- Log Item 3 -->
+<article class="bg-surface-container-lowest rounded-xl p-4 flex gap-4 items-center shadow-[0_4px_16px_-6px_rgba(62,47,40,0.06)] border border-outline-variant/20">
+<div class="w-12 h-12 rounded-lg bg-surface-variant overflow-hidden shrink-0">
+<img alt="Matcha" class="w-full h-full object-cover" data-alt="Iced matcha latte in a tall glass with swirling green and white layers, condensation on glass, clean minimalist background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD3sfNgyy6pC2Gzv-3rA5ZY2jQcvHkMQCV6h1kxWjUK1GIPG3rIQwQJVIFKP0jDTEOu88lL_WFW32DBvequ0SN9-_NADJGRMCx_b79Bk-oR-vxPQBgl8c_mQKKXfPQD7DnKAE3-RtbnqXKrJjLkPyvyWA4pfZdxQHzMSLOUpukjKrBmKMzgIkY4ypdoUNTeHFSUzg5myi3mr3LY4doFMcwzmnCWLY7Xf1gVdjmvB_pAb-EtpD8gs7Z7sTO9h8OHJvMWhJ8Vc7Vo-HQ"/>
+</div>
+<div class="flex-1 min-w-0">
+<h3 class="font-body-md text-body-md font-semibold text-on-surface truncate">冰抹茶拿铁</h3>
+<p class="font-label-sm text-label-sm text-outline font-normal mt-0.5">10月12日, 上午 10:00 • Cha Cha</p>
+</div>
+<div class="flex flex-col items-end gap-1 shrink-0">
+<span class="font-body-md text-body-md font-medium text-on-surface">¥6.00</span>
+<div class="flex items-center gap-1 text-tertiary-container">
+<span class="material-symbols-outlined text-[14px]">water_drop</span>
+<span class="font-label-sm text-[10px]">中</span>
+</div>
+</div>
+</article>
+<!-- Log Item 4 -->
+<article class="bg-surface-container-lowest rounded-xl p-4 flex gap-4 items-center shadow-[0_4px_16px_-6px_rgba(62,47,40,0.06)] border border-outline-variant/20">
+<div class="w-12 h-12 rounded-lg bg-surface-variant overflow-hidden shrink-0 flex items-center justify-center">
+<span class="material-symbols-outlined text-outline">local_cafe</span>
+</div>
+<div class="flex-1 min-w-0">
+<h3 class="font-body-md text-body-md font-semibold text-on-surface truncate">美式咖啡</h3>
+<p class="font-label-sm text-label-sm text-outline font-normal mt-0.5">10月11日, 上午 7:45 • Local Roasters</p>
+</div>
+<div class="flex flex-col items-end gap-1 shrink-0">
+<span class="font-body-md text-body-md font-medium text-on-surface">¥3.50</span>
+<div class="flex items-center gap-1 text-tertiary-container">
+<span class="material-symbols-outlined text-[14px]">water_drop</span>
+<span class="font-label-sm text-[10px]">无</span>
+</div>
+</div>
+</article>
+</div>
+</section>
+</main>
+<!-- BottomNavBar -->
+<nav class="fixed bottom-0 left-0 w-full z-50 flex justify-around items-center px-4 pt-2 pb-6 bg-white/90 dark:bg-stone-900/90 backdrop-blur-md shadow-[0_-4px_20px_-10px_rgba(62,47,40,0.08)] border-none md:hidden">
+<a class="flex flex-col items-center justify-center text-stone-400 dark:text-stone-500 hover:text-[#5D8A66] dark:hover:text-[#7CAF89]" href="#">
+<span class="material-symbols-outlined mb-1">home</span>
+<span class="text-[11px] font-medium font-public-sans">主页</span>
+</a>
+<a class="flex flex-col items-center justify-center text-[#5D8A66] dark:text-[#7CAF89] font-bold bg-[#5D8A66]/10 rounded-xl px-3 py-1 hover:text-[#5D8A66] dark:hover:text-[#7CAF89]" href="#">
+<span class="material-symbols-outlined mb-1" style="font-variation-settings: 'FILL' 1;">receipt_long</span>
+<span class="text-[11px] font-medium font-public-sans">记录</span>
+</a>
+<a class="flex flex-col items-center justify-center text-stone-400 dark:text-stone-500 hover:text-[#5D8A66] dark:hover:text-[#7CAF89]" href="#">
+<span class="material-symbols-outlined mb-1">smart_toy</span>
+<span class="text-[11px] font-medium font-public-sans">AI</span>
+</a>
+<a class="flex flex-col items-center justify-center text-stone-400 dark:text-stone-500 hover:text-[#5D8A66] dark:hover:text-[#7CAF89]" href="#">
+<span class="material-symbols-outlined mb-1">person</span>
+<span class="text-[11px] font-medium font-public-sans">我的</span>
+</a>
+</nav>
+</body></html>

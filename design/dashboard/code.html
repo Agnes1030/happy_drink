@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>SipTrack 概览</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Public+Sans:ital,wght@0,400;0,500;0,600;0,700;1,700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "outline": "#727971",
+                        "on-secondary-fixed-variant": "#59422d",
+                        "tertiary-fixed": "#ffdcbd",
+                        "on-surface": "#1b1c1a",
+                        "inverse-on-surface": "#f2f0ed",
+                        "on-tertiary": "#ffffff",
+                        "surface-container-high": "#eae8e4",
+                        "primary": "#3a6544",
+                        "surface-container-lowest": "#ffffff",
+                        "surface-variant": "#e4e2de",
+                        "on-primary-fixed": "#00210c",
+                        "tertiary-fixed-dim": "#f0bd8b",
+                        "error-container": "#ffdad6",
+                        "tertiary": "#7b542b",
+                        "secondary-container": "#ffdcbf",
+                        "inverse-primary": "#a2d2a9",
+                        "inverse-surface": "#30312e",
+                        "surface-dim": "#dbdad6",
+                        "on-primary": "#ffffff",
+                        "error": "#ba1a1a",
+                        "background": "#fbf9f5",
+                        "on-error": "#ffffff",
+                        "on-secondary": "#ffffff",
+                        "surface": "#fbf9f5",
+                        "surface-bright": "#fbf9f5",
+                        "tertiary-container": "#966c41",
+                        "on-primary-fixed-variant": "#244f30",
+                        "on-background": "#1b1c1a",
+                        "on-secondary-container": "#795f49",
+                        "on-tertiary-fixed-variant": "#623f18",
+                        "secondary": "#725a43",
+                        "primary-fixed-dim": "#a2d2a9",
+                        "surface-container-highest": "#e4e2de",
+                        "secondary-fixed-dim": "#e1c1a5",
+                        "on-surface-variant": "#414941",
+                        "on-tertiary-fixed": "#2c1600",
+                        "surface-container": "#efeeea",
+                        "on-primary-container": "#f6fff3",
+                        "surface-tint": "#3c6846",
+                        "on-tertiary-container": "#fffbff",
+                        "on-error-container": "#93000a",
+                        "primary-container": "#527e5b",
+                        "secondary-fixed": "#ffdcbf",
+                        "outline-variant": "#c1c9bf",
+                        "primary-fixed": "#bdefc4",
+                        "on-secondary-fixed": "#291806",
+                        "surface-container-low": "#f5f3ef"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "sm": "12px",
+                        "margin": "20px",
+                        "xl": "64px",
+                        "xs": "4px",
+                        "lg": "40px",
+                        "gutter": "16px",
+                        "md": "24px",
+                        "base": "8px"
+                    },
+                    "fontFamily": {
+                        "body-lg": ["Public Sans"],
+                        "headline-md": ["Public Sans"],
+                        "label-sm": ["Public Sans"],
+                        "display-lg": ["Public Sans"],
+                        "body-md": ["Public Sans"],
+                        "stat-xl": ["Public Sans"]
+                    },
+                    "fontSize": {
+                        "body-lg": ["18px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                        "headline-md": ["24px", {"lineHeight": "1.3", "fontWeight": "600"}],
+                        "label-sm": ["12px", {"lineHeight": "1.4", "letterSpacing": "0.04em", "fontWeight": "600"}],
+                        "display-lg": ["36px", {"lineHeight": "1.2", "fontWeight": "700"}],
+                        "body-md": ["16px", {"lineHeight": "1.5", "fontWeight": "400"}],
+                        "stat-xl": ["48px", {"lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "700"}]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        .shadow-ambient {
+            box-shadow: 0 8px 24px -8px rgba(62, 47, 40, 0.08);
+        }
+        .shadow-floating {
+            box-shadow: 0 16px 32px -12px rgba(62, 47, 40, 0.12);
+        }
+        .hide-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .hide-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+</head>
+<body class="bg-background text-on-background font-body-md min-h-screen flex flex-col pb-[80px]">
+<!-- TopAppBar (Web) -->
+<header class="hidden md:flex justify-between items-center w-full px-5 h-16 bg-[#FDFCF0] dark:bg-stone-950 border-none shadow-[0_4px_20px_-10px_rgba(62,47,40,0.12)] docked full-width top-0 z-40 sticky">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-[#5D8A66] dark:text-[#7CAF89]">coffee</span>
+<h1 class="text-[#5D8A66] dark:text-[#7CAF89] font-bold italic font-public-sans font-semibold text-lg tracking-tight">SipTrack</h1>
+</div>
+<div class="flex gap-4">
+<span class="font-body-md text-[#5D8A66] hover:opacity-80 transition-opacity cursor-pointer">首页</span>
+<span class="font-body-md text-stone-400 hover:opacity-80 transition-opacity cursor-pointer">记录</span>
+<span class="font-body-md text-stone-400 hover:opacity-80 transition-opacity cursor-pointer">AI 洞察</span>
+<span class="font-body-md text-stone-400 hover:opacity-80 transition-opacity cursor-pointer">我的</span>
+</div>
+<img alt="User profile avatar" class="w-8 h-8 rounded-full object-cover" data-alt="Close up portrait of a young woman smiling warmly, soft natural lighting, light neutral background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAPIoUDwkradecZrIU2CcmaVMdLUvh68PaR1q5hWUANBSvlZKxYIcU321IZdoutXXWEFMx_7AEsJVQ4CLzWcgXO3P5M_lvaaSrqBkGTTLFu5fr28GqkfpP7ujo0vRfdCRuf2fsdiZbEcSa8gndgMSSoc5m_KzhL9o-xK0G7UADwzAeSnfUawYr8TJE7lcopIBn9-Cq1a0WTa9TPNhDjAYRZTrpNPkokRo5G9L7g1Y6cNLSHcLsBCTDAC8VkIPJVbWdMoKK3KwKTIzk"/>
+</header>
+<!-- Main Content Canvas -->
+<main class="flex-grow flex flex-col max-w-3xl w-full mx-auto px-margin pt-md pb-xl">
+<!-- Greeting Section -->
+<section class="flex items-center justify-between mb-lg">
+<div>
+<h2 class="font-headline-md text-on-surface">早上好，Alex</h2>
+<p class="font-body-md text-on-surface-variant mt-xs">准备好来第一杯了吗？</p>
+</div>
+<img alt="User profile avatar" class="w-16 h-16 rounded-full object-cover shadow-ambient md:hidden" data-alt="Close up portrait of a young woman smiling warmly, soft natural lighting, light neutral background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD9zPWmcQ3WSo8I2sxClR6tEA0e4puiLDZkoRlA-dS9HuhOgSVXPOAh9dDnTAR0zvZlrnNCBHInedlmRMDO24ri-7uzkz8WKl9tsI_PHQN3uHLvR-eaTBzHec5sGwedWKEmNFINkXkA1xfJH_wwty1ANXMNYnlal3TmMeJlLFj1SyZl97q7YquSalfpMBiALwR4D-s-6oHkga_woTO5iUbSBz7yN0lQngHrVFPlLfczlgohJfcy1Q-PEFAoiIIDM9XiZWRG5qM_hGk"/>
+</section>
+<!-- Summary Dashboard (Bento Grid) -->
+<section class="grid grid-cols-2 gap-sm mb-lg">
+<h3 class="col-span-2 font-label-sm text-on-surface-variant uppercase tracking-wider mb-xs">本周</h3>
+<!-- Total Cups Card -->
+<div class="bg-surface-container-lowest rounded-xl p-md shadow-ambient flex flex-col justify-between">
+<div class="flex items-center justify-between mb-sm">
+<span class="material-symbols-outlined text-primary">local_cafe</span>
+<span class="font-label-sm text-on-surface-variant bg-surface-container py-1 px-2 rounded-full">杯数</span>
+</div>
+<div>
+<p class="font-stat-xl text-primary">7</p>
+<p class="font-label-sm text-on-surface-variant mt-xs">进度正常</p>
+</div>
+</div>
+<!-- Total Spending Card -->
+<div class="bg-surface-container-lowest rounded-xl p-md shadow-ambient flex flex-col justify-between">
+<div class="flex items-center justify-between mb-sm">
+<span class="material-symbols-outlined text-tertiary">payments</span>
+<span class="font-label-sm text-on-surface-variant bg-surface-container py-1 px-2 rounded-full">支出</span>
+</div>
+<div>
+<p class="font-display-lg text-on-surface">¥42.50</p>
+<p class="font-label-sm text-on-surface-variant mt-xs">较上周 -¥12</p>
+</div>
+</div>
+<!-- Ratio Chart Card -->
+<div class="col-span-2 bg-surface-container-lowest rounded-xl p-md shadow-ambient flex items-center justify-between">
+<div>
+<h4 class="font-body-md text-on-surface font-semibold">咖啡 vs. 茶</h4>
+<p class="font-label-sm text-on-surface-variant mt-xs">本周饮品比例</p>
+</div>
+<div class="flex items-center gap-sm">
+<div class="flex flex-col items-center">
+<span class="font-label-sm text-primary">80%</span>
+<div class="w-12 h-2 bg-surface-variant rounded-full mt-1 overflow-hidden">
+<div class="h-full bg-primary w-[80%] rounded-full"></div>
+</div>
+</div>
+<div class="flex flex-col items-center">
+<span class="font-label-sm text-secondary">20%</span>
+<div class="w-12 h-2 bg-surface-variant rounded-full mt-1 overflow-hidden">
+<div class="h-full bg-secondary w-[20%] rounded-full"></div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Quick Add Area -->
+<section class="mb-lg">
+<h3 class="font-label-sm text-on-surface-variant uppercase tracking-wider mb-sm">新增记录</h3>
+<div class="bg-surface-container-lowest rounded-xl p-sm shadow-ambient flex gap-sm">
+<button class="flex-1 bg-primary text-on-primary font-label-sm py-md rounded-lg flex flex-col items-center justify-center gap-xs shadow-sm hover:opacity-90 active:scale-95 transition-all">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">add_a_photo</span>
+                    拍照扫描
+                </button>
+<button class="flex-1 bg-surface-container text-on-surface font-label-sm py-md rounded-lg flex flex-col items-center justify-center gap-xs shadow-sm hover:bg-surface-variant active:scale-95 transition-all border border-outline-variant">
+<span class="material-symbols-outlined">edit</span>
+                    手动录入
+                </button>
+</div>
+</section>
+<!-- Recent Sips Carousel -->
+<section>
+<div class="flex items-center justify-between mb-sm">
+<h3 class="font-label-sm text-on-surface-variant uppercase tracking-wider">近期饮品</h3>
+<span class="font-label-sm text-primary cursor-pointer hover:underline">查看全部</span>
+</div>
+<div class="flex gap-sm overflow-x-auto hide-scrollbar pb-sm snap-x">
+<!-- Sip 1 -->
+<div class="snap-start shrink-0 w-[200px] bg-surface-container-lowest rounded-xl p-sm shadow-ambient">
+<div class="h-24 rounded-lg bg-surface-variant mb-sm overflow-hidden">
+<img alt="Latte art" class="w-full h-full object-cover" data-alt="Top down view of a creamy latte with delicate leaf latte art in a ceramic mug on a wooden saucer, warm morning cafe lighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAgNOkPZYl7WsWEgu3qO6QHJs3-WejFoScXAOWPUEDizp1Bj7CkTRGtGv-85glp026J6uaCnjke1v5BdNOtFkOBpIZZDL0pspsQ1DStXKk_PfZ6WFtv3I2pjAf6_EABdwcOk_mCpkaaMUupjSUsF1fBaTqnqiWaZKJDK1PzfT2sWGHVaZE6BtAATfJY_VRIW2TIAopnPg0NJlSrQmyMBttJOtGNU5sCWzQco8-P9PXzT2IEt60oeIgyjCGhpeDmcRAUFB5ut-mF_SY"/>
+</div>
+<h4 class="font-body-md text-on-surface font-semibold truncate">燕麦拿铁</h4>
+<p class="font-label-sm text-on-surface-variant mt-xs">Blue Bottle • 8:30 AM</p>
+<div class="flex gap-xs mt-sm">
+<span class="bg-[#f0bd8b]/20 text-[#7b542b] font-label-sm px-2 py-1 rounded-full text-[10px]">燕麦奶</span>
+<span class="bg-[#f0bd8b]/20 text-[#7b542b] font-label-sm px-2 py-1 rounded-full text-[10px]">热</span>
+</div>
+</div>
+<!-- Sip 2 -->
+<div class="snap-start shrink-0 w-[200px] bg-surface-container-lowest rounded-xl p-sm shadow-ambient">
+<div class="h-24 rounded-lg bg-surface-variant mb-sm overflow-hidden">
+<img alt="Matcha tea" class="w-full h-full object-cover" data-alt="Close up of a vibrant green iced matcha latte in a clear glass with condensation, soft natural sunlight streaming through a window" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAjZNYltjG8XCGf1xE6bNmp7Zayz0b3vwStAap4ZyD1LA45iEYFFFSo2EiWjfTWOh38MabC5JR2PnncL0vuOkUaYBYpneqIg9E1KP98DP22IrTp0jNeuijP65WMS5RsBOusyMz1dVULgefnYSU5dmXnY7n680JovM0VZMzqVK1yvkO_PmSKM_6MTY4KBgwrLqQxzauzo1XD7D8V86dVZBQOv5YxflCPzJY_dr04rWKTYu_8gE3P9GtRBhfG7GfyvrBwR5i_13vQchA"/>
+</div>
+<h4 class="font-body-md text-on-surface font-semibold truncate">冰抹茶</h4>
+<p class="font-label-sm text-on-surface-variant mt-xs">Cha Cha • 昨天</p>
+<div class="flex gap-xs mt-sm">
+<span class="bg-primary/10 text-primary font-label-sm px-2 py-1 rounded-full text-[10px]">杏仁奶</span>
+<span class="bg-primary/10 text-primary font-label-sm px-2 py-1 rounded-full text-[10px]">冰</span>
+</div>
+</div>
+<!-- Sip 3 -->
+<div class="snap-start shrink-0 w-[200px] bg-surface-container-lowest rounded-xl p-sm shadow-ambient">
+<div class="h-24 rounded-lg bg-surface-variant mb-sm overflow-hidden flex items-center justify-center bg-surface-container">
+<span class="material-symbols-outlined text-outline text-3xl">local_cafe</span>
+</div>
+<h4 class="font-body-md text-on-surface font-semibold truncate">美式咖啡</h4>
+<p class="font-label-sm text-on-surface-variant mt-xs">自家冲煮 • 周二</p>
+<div class="flex gap-xs mt-sm">
+<span class="bg-surface-variant text-on-surface-variant font-label-sm px-2 py-1 rounded-full text-[10px]">黑咖</span>
+<span class="bg-surface-variant text-on-surface-variant font-label-sm px-2 py-1 rounded-full text-[10px]">热</span>
+</div>
+</div>
+</div>
+</section>
+</main>
+<!-- BottomNavBar (Mobile) -->
+<nav class="md:hidden fixed bottom-0 left-0 w-full z-50 flex justify-around items-center px-4 pt-2 pb-6 bg-white/90 dark:bg-stone-900/90 backdrop-blur-md shadow-[0_-4px_20px_-10px_rgba(62,47,40,0.08)]">
+<!-- Active Tab: Home -->
+<div class="flex flex-col items-center justify-center text-[#5D8A66] dark:text-[#7CAF89] font-bold bg-[#5D8A66]/10 rounded-xl px-3 py-1 scale-95 transition-transform cursor-pointer">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">home</span>
+<span class="text-[11px] font-medium font-public-sans mt-1">首页</span>
+</div>
+<!-- Inactive Tabs -->
+<div class="flex flex-col items-center justify-center text-stone-400 dark:text-stone-500 hover:text-[#5D8A66] dark:hover:text-[#7CAF89] cursor-pointer transition-colors">
+<span class="material-symbols-outlined">receipt_long</span>
+<span class="text-[11px] font-medium font-public-sans mt-1">记录</span>
+</div>
+<div class="flex flex-col items-center justify-center text-stone-400 dark:text-stone-500 hover:text-[#5D8A66] dark:hover:text-[#7CAF89] cursor-pointer transition-colors">
+<span class="material-symbols-outlined">smart_toy</span>
+<span class="text-[11px] font-medium font-public-sans mt-1">AI</span>
+</div>
+<div class="flex flex-col items-center justify-center text-stone-400 dark:text-stone-500 hover:text-[#5D8A66] dark:hover:text-[#7CAF89] cursor-pointer transition-colors">
+<span class="material-symbols-outlined">person</span>
+<span class="text-[11px] font-medium font-public-sans mt-1">我的</span>
+</div>
+</nav>
+</body></html>
